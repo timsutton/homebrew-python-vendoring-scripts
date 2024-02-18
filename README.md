@@ -30,4 +30,8 @@ This will (1) remove the appropriate `depends_on` lines in formulas, and (2) run
 
 ## Next steps
 
-Take a look at the formula changes and see if they make sense, or might need additional edits. Test out the installation and open a PR for the formula and `pypi_formula_mappings.json` change.
+Take a look at the formula changes and see if they make sense, or might need additional edits.
+
+If the formula didn't previously have anything vendored, it should also set its install method to use the `virtualenv_install_with_resources` method and `include Language::Python::Virtualenv` in the formula.
+
+Test out the installation and open a PR for the formula and `pypi_formula_mappings.json` change.
