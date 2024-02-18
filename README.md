@@ -18,7 +18,13 @@ With a basic Ruby environment loaded, run the `remove-excluded-pypi-packages.rb`
 
 ### Update Python resources in formulas
 
-Run `update-formula-files.sh` next, to make the initial formula updates. This will (1) remove the appropriate `depends_on` lines in formulas, and (2) run `brew update-python-resources <formula>` on all formulae which are modified (according to Git).
+Run `update-formula-files.sh` next, to make the initial formula updates:
+
+```bash
+./update-formula-files.sh
+```
+
+This will (1) remove the appropriate `depends_on` lines in formulas, and (2) run `brew update-python-resources <formula>` on all formulae which are modified (according to Git).
 
 ## Next steps
 
