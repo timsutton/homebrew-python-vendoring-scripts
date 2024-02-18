@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+# frozen_string_literal: true
 
 # Removes excluded packages from pypi_formula_mappings.json,
 # so that they can be vendored back into formulas.
@@ -30,7 +31,13 @@ EXCLUDED_PACKAGES_TO_REMOVE = Set.new(%w[
   urllib3
 ])
 
-data = JSON.load(File.read('pypi_formula_mappings.json'))
+mappings_file = File.join(
+  `brew --prefix`.strip,
+  'Library/Taps/homebrew/homebrew-core',
+  'pypi_formula_mappings.json'
+)
+
+data = JSON.parse(File.read(mappings_file))
 data.each do |formula, v|
   set = Set.new(v['exclude_packages'])
   EXCLUDED_PACKAGES_TO_REMOVE.each do |excl|
@@ -50,6 +57,6 @@ end
 #       keep the same json formatting as the original file,
 #       or at least close to it. if not possible, maybe switch
 #       to a different JSON formatting gem
-File.open('pypi_formula_mappings.json', 'w') do |f|
+File.open(mappings_file, 'w') do |f|
   f.write(JSON.neat_generate(data))
 end

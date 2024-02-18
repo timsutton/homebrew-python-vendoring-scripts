@@ -18,9 +18,9 @@ brew_formulae_to_vendor=(
   six
 )
 
-# If you want to resume from a specific formula, set this variable to something,
-# otherwise leave it unset
-resume_from_formula="gptline"
+# If you want to resume from a specific point in the alpha list of formulae,
+# set this variable to something, otherwise leave it unset.
+resume_from_formula="bpytop"
 
 function setup() {
   command -v rg >/dev/null || brew install ripgrep
@@ -61,6 +61,9 @@ function run_update_python_resources() {
   done
 }
 
-setup
-remove_depends_on
-run_update_python_resources
+(
+  cd "$(brew --prefix)/Library/Taps/homebrew/homebrew-core"
+  setup
+  remove_depends_on
+  run_update_python_resources
+)
