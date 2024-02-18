@@ -6,6 +6,8 @@ A few scripts to help automate the process of migrating most Python-based formul
 
 Currently there are two scripts, which each have a hardcoded list of formulae or PyPi package names. These lists should contain the full list of formulae/packages to be vendored.
 
+If you need to modify the formulae/pypi package lists, edit the lists in the scripts directly.
+
 The scripts can be run out of this repo checkout, and assume you have homebrew-core tapped.
 
 ### Remove excluded PyPi packages from formula mappings
