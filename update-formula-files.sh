@@ -20,7 +20,7 @@ brew_formulae_to_vendor=(
 
 # If you want to resume from a specific point in the alpha list of formulae,
 # set this variable to something, otherwise leave it unset.
-resume_from_formula="bpytop"
+resume_from_formula=
 
 function setup() {
   command -v rg >/dev/null || brew install ripgrep
@@ -29,7 +29,7 @@ function setup() {
 
 function remove_depends_on() {
   for formula in "${brew_formulae_to_vendor[@]}"; do
-    rg --files-with-matches "$formula" | xargs gsed -i '/depends_on \"'"$formula"'\"/d'
+    rg --files-with-matches "$formula" | xargs gsed -i '/depends_on \"'"$formula"'\"/d' || true
   done
 }
 
